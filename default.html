@@ -12,8 +12,17 @@
     <!-- ShowHackathonPassword references -->
     <link href="/css/default.css" rel="stylesheet" />
     <script src="/js/default.js"></script>
+    <script src="/js/rijndael.js"></script>
 </head>
 <body>
-    <p>Content goes here</p>
+    <h1>The password is: <span id="thePassword"></span></h1>
+    <script>
+        var a = "f2635bece7eaedec0a9e56ff722a4d69e00db6fbc39e8e68c513a68cd8c881d4";
+        var b = [17, 137, 81, 50, 152, 80, 86, 51, 49, 33, 128, 54, 130, 145, 117, 97]
+        var c = 'ECB';
+        var d = byteArrayToString(rijndaelDecrypt(hexToByteArray(a), b, c));
+        var element = document.getElementById('thePassword');
+        element.innerText = d;
+    </script>
 </body>
 </html>
